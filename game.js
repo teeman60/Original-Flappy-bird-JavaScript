@@ -1,3 +1,15 @@
+// FETCH USERS
+// let currentUser1 
+// fetch(url)
+//     .then(res => res.json())
+//     .then(users =>{
+//         currentUser1 = users.find(user => user.username == currentUser)
+//         console.log(currentUser1)
+//     })
+
+// const found = array1.find(element => element > 10);
+
+
 // SELECT CVS
 const cvs = document.getElementById("bird");
 const ctx = cvs.getContext("2d");
@@ -289,7 +301,8 @@ const pipes = {
                 this.position.shift();
                 score.value += 1;
                 SCORE_S.play();
-                score.best = Math.max(score.value, score.best);
+
+                score.best = Math.max(score.value, score.best, currentUser1.highest_score);
                 localStorage.setItem("best", score.best);
             }
         }
@@ -325,7 +338,10 @@ const score= {
             ctx.fillText(this.best, 225, 228);
             ctx.strokeText(this.best, 225, 228);
         }
+        // console.log(score.best)
     },
+
+
     
     reset : function(){
         this.value = 0;
@@ -355,10 +371,15 @@ function update(){
 
 // LOOP
 function loop(){
+
+    // console.log(currentUser1)
+    
+
     update();
     draw();
     frames++;
     
     requestAnimationFrame(loop);
 }
-loop();
+// loop();
+
